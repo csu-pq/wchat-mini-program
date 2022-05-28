@@ -1,0 +1,26 @@
+.weui-toptips {
+  top: 0;
+  border-radius: 0;
+  left: 0;
+  width: 100%;
+  display: block;
+  height: 80rpx;
+  padding: 0;
+  text-align: center;
+  padding-top: 20rpx;
+}
+.tip {
+  width: 100%;
+  color: red;
+  font-size: 28rpx;
+  background-color: #e6e6e6;
+}
+.weui-input{
+  font-size: 35rpx;
+}
+.weui-textarea{
+  font-size: 35rpx;
+}
+.weui-uploader__tips{
+  font-size: 25rpx;
+}

@@ -1,0 +1,61 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/favorite/favorite",
+    "pages/add/add",
+    "pages/message/message",
+    "pages/mine/mine",
+    "pages/setting/my_info/my_info",
+    "pages/setting/my_about/my_about",
+    "pages/setting/my_post/my_post",
+    "pages/setting/my_setting/my_setting",
+    "pages/setting/my_dianzan/my_dianzan",
+    "pages/classifyPost/classifyPost",
+    "pages/showPost/showPost",
+    "pages/showSearchPost/showSearchPost",
+    "pages/showReBangPost/showReBangPost"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "校园二手交易平台",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/tabBar/main.png",
+        "selectedIconPath": "images/tabBar/main_fill.png"
+      },
+      {
+        "pagePath": "pages/favorite/favorite",
+        "text": "收藏",
+        "iconPath": "images/tabBar/favorite.png",
+        "selectedIconPath": "images/tabBar/favorite_fill.png"
+      },
+      {
+        "pagePath": "pages/add/add",
+        "text": "发布",
+        "iconPath": "images/tabBar/add.png",
+        "selectedIconPath": "images/tabBar/add_fill.png"
+      },
+      {
+        "pagePath": "pages/message/message",
+        "text": "消息",
+        "iconPath": "images/tabBar/message.png",
+        "selectedIconPath": "images/tabBar/message_fill.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "images/tabBar/mine.png",
+        "selectedIconPath": "images/tabBar/mine_fill.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

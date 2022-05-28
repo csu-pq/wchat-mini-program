@@ -1,0 +1,15 @@
+<view class="weui-panel">
+  <view class="weui-panel__bd">
+    <block wx:for="{{postList}}" wx:key="id">
+      <view bindtap="showPostInfo" id="{{item.postId}}" aria-labelledby="js_p4m1_title js_a11y_comma js_p4m1_desc" aria-describedby="js_p4m1_source js_a11y_comma js_p4m1_time js_a11y_comma js_p4m1_extra" class="weui-media-box weui-media-box_text" aria-role="link">
+        <text aria-hidden="true" class="weui-media-box__title" id="js_p4m1_title">{{item.title}}</text>
+        <view class="weui-media-box__desc" aria-hidden="true" id="js_p4m1_desc">{{item.content}}</view>
+        <view class="weui-media-box__info" aria-hidden="true">
+          <view catchtap="showByCategory" class="weui-media-box__info__meta" aria-hidden="true" id="{{item.category}}">#{{item.category}}#</view>
+          <view catchtap="showByCampus" class="weui-media-box__info__meta" aria-hidden="true" id="{{item.campus}}">#{{item.campus}}#</view>
+          <view class="weui-media-box__info__meta weui-media-box__info__meta_extra" aria-hidden="true" id="js_p4m1_extra">{{item.postTime}}</view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

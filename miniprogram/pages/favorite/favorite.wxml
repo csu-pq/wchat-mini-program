@@ -1,0 +1,44 @@
+<view wx:if="{{!hasUserInfo}}">
+	<view class="weui-msg">
+		<view class="weui-msg__icon-area"><text class="weui-icon-warn weui-icon_msg"></text></view>
+		<view class="weui-msg__text-area">
+			<view class="weui-msg__title">请先登录</view>
+		</view>
+	</view>
+	<view class="weui-msg__opr-area">
+		<view class="weui-btn-area">
+			<navigator class="weui-btn weui-btn_default" aria-role="button" open-type="switchTab" url="../mine/mine">去登录</navigator>
+		</view>
+	</view>
+</view>
+<view wx:else>
+	<view wx:if="{{postList.length==0}}">暂无收藏</view>
+	<view wx:else class="weui-panel">
+		<view class="weui-panel__bd">
+			<block wx:for="{{postList}}" wx:key="id" wx:for-index="arryIndex">
+				<i-swipeout i-class="i-swipeout-demo-item" operateWidth="{{140}}">
+					<view slot="content">
+						<view wx:if="{{item==null}}" aria-labelledby="js_p4m1_title js_a11y_comma js_p4m1_desc" aria-describedby="js_p4m1_source js_a11y_comma js_p4m1_time js_a11y_comma js_p4m1_extra" class="weui-media-box weui-media-box_text" aria-role="link">
+							<text aria-hidden="true" class="weui-media-box__title" id="js_p4m1_title">该贴已被删除</text>
+							<view class="weui-media-box__desc" aria-hidden="true" id="js_p4m1_desc"></view>
+							<view class="weui-media-box__info" aria-hidden="true"></view>
+						</view>
+						<view wx:else bindtap="showPostInfo" id="{{item.postId}}" aria-labelledby="js_p4m1_title js_a11y_comma js_p4m1_desc" aria-describedby="js_p4m1_source js_a11y_comma js_p4m1_time js_a11y_comma js_p4m1_extra" class="weui-media-box weui-media-box_text" aria-role="link">
+							<text aria-hidden="true" class="weui-media-box__title" id="js_p4m1_title">{{item.title}}</text>
+							<view class="weui-media-box__desc" aria-hidden="true" id="js_p4m1_desc">{{item.content}}</view>
+							<view class="weui-media-box__info" aria-hidden="true">
+								<view catchtap="showByCategory" class="weui-media-box__info__meta" aria-hidden="true" id="{{item.category}}">#{{item.category}}#</view>
+								<view catchtap="showByCampus" class="weui-media-box__info__meta" aria-hidden="true" id="{{item.campus}}">#{{item.campus}}#</view>
+								<view class="weui-media-box__info__meta weui-media-box__info__meta_extra" aria-hidden="true" id="js_p4m1_extra">{{item.postTime}}</view>
+							</view>
+						</view>
+					</view>
+					<view slot="button" class="i-swipeout-demo-button-group">
+						<view bindtap="delete_favpost" data-index="{{arryIndex}}" class="delete_btn">删除</view>
+						<view class="undo_btn">返回</view>
+					</view>
+				</i-swipeout>
+			</block>
+		</view>
+	</view>
+</view>

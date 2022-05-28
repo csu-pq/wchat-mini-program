@@ -1,0 +1,154 @@
+<view wx:if="{{hasUserInfo}}">
+  <view wx:if="{{post==null}}">
+    <view>该贴已被删除</view>
+  </view>
+  <view wx:else>
+    <view class="mask" catchtouchmove="preventTouch" wx:if="{{zhiding}}"></view>
+    <view wx:if="{{zhiding}}" class="zhiding_select">
+      <view class="weui-cells__group weui-cells__group_form">
+        <view class="weui-cells weui-cells_radio">
+          <radio-group class="radio-group" bindchange="radioChange">
+            <label class="weui-cell weui-cell_active weui-check__label" wx:for="{{items}}" wx:key="name">
+              <view class="weui-cell__bd">
+                <view>{{item.value}}</view>
+              </view>
+              <view class="weui-cell__ft">
+                <radio class="weui-check" value="{{item.name}}" checked="{{item.checked}}" />
+                <i class="weui-icon-checked"></i>
+              </view>
+            </label>
+          </radio-group>
+        </view>
+      </view>
+      <view wx:if="{{!pay}}" class="unpay">
+        <button class="zhiding_close" bindtap="zhiding_close">关闭</button>
+      </view>
+      <view wx:else class="pay">
+        <button class="zhiding_close" bindtap="zhiding_close">关闭</button>
+        <view class="btn_br"></view>
+        <button class="weui-btn weui-btn_default" bindtap="zhiding_pay">支付￥{{price}}</button>
+      </view>
+
+    </view>
+    <view bindtap="changeCommentTo">
+      <view class="userInfo">
+        <view class="weui-cell__hd">
+          <image src="{{postUserInfo.imgURL}}"></image>
+        </view>
+        <view class="nickName">{{postUserInfo.nickName}}</view>
+        <view catchtap="zhiding_open" class="zhiding">
+          <image src="../../images/other/zhiding.png"></image>
+        </view>
+      </view>
+      <view class="postInfo">
+        <view class="title">{{post.title}}</view>
+        <view class="content">{{post.content}}</view>
+      </view>
+
+      <!-- 帖子图片展示 -->
+      <view class="weui-uploader__bd">
+        <view class="weui-uploader__files" id="uploaderFiles">
+          <block wx:for="{{post.imgURL}}" wx:key="*this" wx:for-index="arryIndex">
+            <view class="weui-uploader__file" bindtap="previewImage" id="{{item}}" data-index="{{arryIndex}}">
+              <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+            </view>
+          </block>
+        </view>
+      </view>
+      <view class="contact">
+        <view>联系人：{{post.contact}}</view>
+        <block wx:for="{{post.contactInfo}}" wx:key="id">
+          <view wx:if="{{item[1]}}">{{item[0]}}: {{item[1]}}</view>
+        </block>
+      </view>
+      <view class="leixing">
+        <view catchtap="showByCategory" class="weui-media-box__info__meta" aria-hidden="true" id="{{post.category}}">#{{post.category}}#</view>
+        <view catchtap="showByCampus" class="weui-media-box__info__meta" aria-hidden="true" id="{{[post].campus}}">#{{post.campus}}#</view>
+      </view>
+      <view class="postTime">发布于{{post.postTime}}</view>
+      <view class="br"></view>
+
+      <view class="pds">
+        <view class="pds_hd">评论{{talks.length}}</view>
+        <view class="pds_br"> </view>
+        <view class="pds_p">
+          <view bindtap="dianzan" class="dianzan">
+            <image wx:if="{{dianzan}}" class="scImg" src="../../images/other/dianzan_fill.png"></image>
+            <image wx:else class="scImg" src="../../images/other/dianzan.png"></image>
+            <view class="number">{{dianzanNum}}</view>
+          </view>
+          <view class="pds_br2"> </view>
+          <view bindtap="shoucang" class="shoucang">
+            <image wx:if="{{shoucang}}" class="scImg" src="../../images/other/shoucang_fill.png"></image>
+            <image wx:else class="scImg" src="../../images/other/shoucang.png"></image>
+            <view class="number">{{shoucangNum}}</view>
+          </view>
+        </view>
+      </view>
+      <!-- 评论区 -->
+      <view class="br"></view>
+    </view>
+    <!-- 评论区 -->
+    <view>
+      <view class="top">
+        <view class="user_image">
+          <image src="{{record.imgURL}}" />
+        </view>
+        <view class="input_comment">
+          <input name="input_comment" value="{{comment}}" bindinput="getComment" type="text" placeholder="{{placeholder}}" />
+        </view>
+        <view bindtap="submitComment" class="send_comment">
+          发布
+        </view>
+      </view>
+      <scroll-view scroll-y="{{true}}" style="height: calc(100vh - 85px - {{navTop+'px'}});">
+        <view wx:for="{{talks}}" wx:for-item="item" wx:key="id" class="comment">
+          <view wx:if="{{item.level==1}}" class="content" id="{{item.commentId}}" data-comment="{{item.comment}}" data-openId="{{item.openId}}" data-nickName="{{item.nickName}}" bindtap="huifu">
+            <view class="user_image">
+              <image src="{{item.imgURL}}" />
+            </view>
+            <view class="user_detail">
+              <view class="user_name">{{item.nickName}}</view>
+              <view class="user_comment">
+                {{item.comment}}
+                <view class="time">{{item.commentTime}}</view>
+              </view>
+              <view wx:for="{{talks_asc}}" wx:for-item="inlevel" wx:key="id">
+                <view wx:if="{{inlevel.level==2 && inlevel.commentTo==item.commentId}}" class="content" id="{{inlevel.commentId}}" data-nickName="{{inlevel.nickName}}" data-commentTo="{{item.commentId}}" data-comment="{{inlevel.comment}}" data-openId="{{inlevel.openId}}" catchtap="huifu2">
+                  <view class="user_image">
+                    <image style="width:60rpx;height:60rpx" src="{{inlevel.imgURL}}" />
+                  </view>
+                  <view class="user_detail">
+                    <view wx:if="{{inlevel.commentTo2==''}}" class="user_name">{{inlevel.nickName}}</view>
+                    <view wx:else class="user_name">{{inlevel.nickName}}->{{inlevel.commentTo2}}</view>
+                    <view class="user_comment">
+                      {{inlevel.comment}}
+                      <view class="time">{{inlevel.commentTime}}</view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="end">
+          <view class="tip">我也是有底线的~</view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+
+</view>
+<view wx:else>
+  <view class="weui-msg">
+    <view class="weui-msg__icon-area"><text class="weui-icon-warn weui-icon_msg"></text></view>
+    <view class="weui-msg__text-area">
+      <view class="weui-msg__title">登录后才能查看内容哦~</view>
+    </view>
+  </view>
+  <view class="weui-msg__opr-area">
+    <view class="weui-btn-area">
+      <navigator class="weui-btn weui-btn_default" aria-role="button" open-type="switchTab" url="../mine/mine">去登录</navigator>
+    </view>
+  </view>
+</view>

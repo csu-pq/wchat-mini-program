@@ -1,0 +1,281 @@
+@import '../../weui.wxss';
+
+.mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  z-index: 9000;
+  opacity: 0.7;
+}
+.weui-cell weui-cell_active weui-check__label{
+  text-align: center;
+}
+.zhiding_select {
+  width: 580rpx;
+  height: 820rpx;
+  position: fixed;
+  top: 40%;
+  left: 0;
+  z-index: 9999;
+  margin: -370rpx 85rpx;
+  background-color: #fff;
+  border-radius: 36rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.unpay {
+  padding-top: 80rpx;
+}
+
+.pay {
+  padding-top: 20rpx;
+}
+
+.btn_br {
+  height: 20rpx;
+}
+
+.userInfo {
+  display: flex;
+  width: 100%;
+  height: 150rpx;
+  padding: 20rpx;
+}
+
+.weui-cell__hd image {
+  vertical-align: middle;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+}
+
+.nickName {
+  width: 70%;
+  padding-top: 20rpx;
+  padding-left: 20rpx;
+  font-size: 35rpx;
+  color: #748AA1;
+}
+
+.zhiding {
+  padding-top: 20rpx;
+  padding-right: 100rpx;
+  height: 100rpx;
+}
+
+.zhiding image {
+  width: 50rpx;
+  height: 60rpx;
+}
+
+.postInfo {
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  padding-bottom: 20rpx;
+}
+
+.title {
+  text-align: center;
+  font-size: 35rpx;
+  font-weight: 600;
+}
+
+.weui-uploader__bd {
+  border-bottom: 1rpx solid rgba(0, 0, 0, 0.1);
+  padding-left: 20rpx;
+}
+
+.contact {
+  padding-top: 20rpx;
+  padding-left: 20rpx;
+}
+
+.leixing {
+  display: flex;
+  padding-left: 20rpx;
+}
+
+.weui-media-box__info__meta {
+  padding-top: 20rpx;
+  color: #748AA1;
+  font-size: 12px;
+}
+
+.postTime {
+  padding-left: 20rpx;
+  font-size: 12px;
+  color: #999;
+}
+
+.scImg {
+  margin-right: 0;
+  vertical-align: middle;
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.pds {
+  padding-left: 20rpx;
+  display: flex;
+  width: 100%;
+  height: 100rpx;
+}
+
+.pds_hd {
+  padding-top: 18rpx;
+}
+
+.pds_br {
+  width: 50%;
+  height: 100rpx;
+}
+
+.pds_p {
+  display: flex;
+
+}
+
+.dianzan {
+  width: 60rpx;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 2;
+}
+
+.pds_br2 {
+  width: 60rpx;
+}
+
+.shoucang {
+  width: 60rpx;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 2;
+}
+
+.pds image {
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.number {
+  text-align: center;
+  font-weight: 800;
+  font-size: 25rpx;
+}
+
+.br {
+  width: 100%;
+  height: 50rpx;
+}
+
+.comment {
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  padding-top: 20rpx;
+}
+
+.content {
+  margin-top: 15rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.user_image image {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+}
+
+.user_detail {
+  padding-left: 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  flex-grow: 3;
+}
+
+.user_detail .user_name {
+  font-weight: 800;
+  font-size: 27rpx;
+  color: #999;
+}
+
+.user_detail .user_comment {
+  font-size: 30rpx;
+}
+
+.user_detail .user_comment .time {
+  font-size: 20rpx;
+  color: #999;
+}
+
+.end {
+  margin-top: 50rpx;
+  color: #999;
+  font-size: 25rpx;
+  font-weight: 200;
+  text-align: center;
+}
+
+.line {
+  background-color: #999;
+}
+
+.top {
+  /* border-top: 1rpx solid rgba(0, 0, 0, 0.2); */
+  /* position: fixed; */
+  /* bottom: 0; */
+  left: 3;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: baseline;
+  align-items: center;
+  height: 30px;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  /* border-top: 1rpx solid rgba(0, 0, 0, 0.2); */
+}
+
+.input_comment {
+  padding-left: 20rpx;
+  width: 65%;
+  padding-right: 20rpx;
+  /* padding-left: 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  flex-grow: 3; */
+}
+
+.input_comment input {
+  font-size: 15px;
+  height: 40px;
+  width: 100%;
+  padding-left: 20rpx;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.send_comment {
+  color: #06AE56;
+  padding-left: 20rpx;
+}
+
+.send_comment image {
+  width: 30px;
+  height: 30px;
+}
+
+/*隐藏滚动条*/
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}

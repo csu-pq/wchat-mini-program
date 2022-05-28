@@ -1,0 +1,58 @@
+<view wx:if="{{!hasUserInfo}}">
+  你还未登录！
+</view>
+<view wx:else>
+  <view class="user_info_wrap">
+    <view class="user_img_wrap">
+      <view class="user_info">
+        <image class="user_icon" src="{{record.imgURL}}"></image>
+        <view class="user_nickname">{{record.nickName}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="weui-cells">
+    <view class="weui-cell weui-cell_active">
+      <view class="weui-cell__hd"><label class="weui-label">个性签名：</label></view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" type="text" bindinput="bindinput1" value="{{record.sign}}" />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_active">
+      <view class="weui-cell__hd">
+        <label class="weui-label">联系人：</label>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" type="text" bindinput="bindinput2" value="{{record.contact}}" />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_active">
+      <view class="weui-cell__hd">
+        <label class="weui-label">微信：</label>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" type="text" bindinput="bindinput3" value="{{record.wechat}}" />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_active">
+      <view class="weui-cell__hd">
+        <label class="weui-label">QQ：</label>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" type="text" bindinput="bindinput4" value="{{record.QQ}}" />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_active">
+      <view class="weui-cell__hd">
+        <label class="weui-label">电话：</label>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" type="text" bindinput="bindinput5" value="{{record.tel}}" />
+      </view>
+    </view>
+  </view>
+  <view>
+    <button type="primary" size="default" bindtap="subInfo">
+      修改
+    </button>
+  </view>
+</view>

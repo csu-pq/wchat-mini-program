@@ -1,0 +1,25 @@
+
+.user_info_wrap {
+  height: 26vh;
+  overflow: hidden;
+  background-color: #ffffff;
+  position: relative;
+}
+.user_info_wrap .user_img_wrap .user_info {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 20%;
+  text-align: center;
+}
+.user_info_wrap .user_img_wrap .user_info .user_icon {
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%;
+}
+.user_info_wrap .user_img_wrap .user_info .user_nickname {
+  color: black;
+}
+.btn{
+  padding-top: 90rpx;
+}

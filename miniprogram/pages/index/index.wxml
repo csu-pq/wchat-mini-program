@@ -1,0 +1,103 @@
+<!-- 搜索框 -->
+<view class="page__bd">
+  <view class="weui-search-bar {{inputShowed ? 'weui-search-bar_focusing' : ''}}" id="searchBar">
+    <form class="weui-search-bar__form" aria-role="combobox" aria-haspopup="true" aria-expanded="{{inputVal.length > 0 ? 'true' : 'false'}}" aria-owns="searchResult">
+      <view class="weui-search-bar__box">
+        <i class="weui-icon-search"></i>
+        <input aria-controls="searchResult" type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" bindconfirm="searchSubmit" bindblur="lostBlur" />
+        <view aria-role="button" aria-label="清除" class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput"></view>
+      </view>
+      <label class="weui-search-bar__label" bindtap="showInput">
+        <i class="weui-icon-search"></i>
+        <span class="weui-search-bar__text">搜索</span>
+      </label>
+    </form>
+    <view aria-role="button" class="weui-search-bar__cancel-btn" bindtap="searchSubmit">搜索</view>
+  </view>
+</view>
+
+<!-- 轮播图 -->
+<swiper class="swiper" circular="true" indicator-dots="true" autoplay="true" interval="3500" duration="1000">
+  <block wx:for="{{p_url}}" wx:key="id">
+    <swiper-item bindtap="showByCampus" id="{{item[1]}}">
+      <image src="{{item[0]}}" class="slide-img" />
+    </swiper-item>
+  </block>
+</swiper>
+
+<!-- 分类浏览 -->
+<view class='category'>
+  <view bindtap="showByCategory" id="二手闲置" class='navigator'>
+    <view class='img'>
+      <image src="../../images/navigate/ershou.png"></image>
+      <view>二手闲置</view>
+    </view>
+  </view>
+  <view bindtap="showByCategory" id="打听求助" class='navigator'>
+    <view class='img'>
+      <image src='../../images/navigate/datin.png'></image>
+      <view>打听求助</view>
+    </view>
+  </view>
+  <view bindtap="showByCategory" id="组队交友" class='navigator'>
+    <view class='img'>
+      <image src='../../images/navigate/jiaoyou.png'></image>
+      <view>组队交友</view>
+    </view>
+  </view>
+  <view bindtap="showByCategory" id="爱心公益" class='navigator'>
+    <view class='img'>
+      <image src='../../images/navigate/gongyi.png'></image>
+      <view>爱心公益</view>
+    </view>
+  </view>
+</view>
+
+<!-- 热榜 -->
+<view class="rebang" bindtap="showRebang">
+  <view class="rebang_hd">
+    <view>热</view>
+    <view>榜</view>
+    <image src="../../images/other/rebang.png"></image>
+  </view>
+  <swiper class="swiper_container" vertical="true" autoplay="true" circular="true" interval="4000">
+    <block wx:for="{{rebangPost}}" wx:key="id">
+        <swiper-item>
+          <view class="swiper_item">{{item.title}}</view>
+        </swiper-item>
+    </block>
+  </swiper>
+</view>
+
+<!-- 内容显示 -->
+<view class="weui-panel">
+  <view class="weui-panel__bd">
+    <block wx:for="{{postList_zhiding}}" wx:key="id">
+      <view bindtap="showPostInfo" id="{{item.postId}}" aria-labelledby="js_p4m1_title js_a11y_comma js_p4m1_desc" aria-describedby="js_p4m1_source js_a11y_comma js_p4m1_time js_a11y_comma js_p4m1_extra" class="weui-media-box weui-media-box_text" aria-role="link">
+        
+        <view>
+          <image class="zhiding_image" src="../../images/other/zhiding2.png"></image>
+          <text aria-hidden="true" class="weui-media-box__title" id="js_p4m1_title">{{item.title}}</text>
+          <view class="weui-media-box__desc" aria-hidden="true" id="js_p4m1_desc">{{item.content}}</view>
+          <view class="weui-media-box__info" aria-hidden="true">
+            <view catchtap="showByCategory" class="weui-media-box__info__meta" aria-hidden="true" id="{{item.category}}">#{{item.category}}#</view>
+            <view catchtap="showByCampus" class="weui-media-box__info__meta" aria-hidden="true" id="{{item.campus}}">#{{item.campus}}#</view>
+            <view class="weui-media-box__info__meta weui-media-box__info__meta_extra" aria-hidden="true" id="js_p4m1_extra">{{item.postTime}}</view>
+          </view>
+      
+        </view>
+      </view>
+    </block>
+    <block wx:for="{{postList}}" wx:key="id">
+      <view bindtap="showPostInfo" id="{{item.postId}}" aria-labelledby="js_p4m1_title js_a11y_comma js_p4m1_desc" aria-describedby="js_p4m1_source js_a11y_comma js_p4m1_time js_a11y_comma js_p4m1_extra" class="weui-media-box weui-media-box_text" aria-role="link">
+        <text aria-hidden="true" class="weui-media-box__title" id="js_p4m1_title">{{item.title}}</text>
+        <view class="weui-media-box__desc" aria-hidden="true" id="js_p4m1_desc">{{item.content}}</view>
+        <view class="weui-media-box__info" aria-hidden="true">
+          <view catchtap="showByCategory" class="weui-media-box__info__meta" aria-hidden="true" id="{{item.category}}">#{{item.category}}#</view>
+          <view catchtap="showByCampus" class="weui-media-box__info__meta" aria-hidden="true" id="{{item.campus}}">#{{item.campus}}#</view>
+          <view class="weui-media-box__info__meta weui-media-box__info__meta_extra" aria-hidden="true" id="js_p4m1_extra">{{item.postTime}}</view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

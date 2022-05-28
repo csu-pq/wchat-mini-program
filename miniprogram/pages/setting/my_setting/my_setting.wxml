@@ -1,0 +1,9 @@
+<view wx:if="{{!hasUserInfo}}">
+  你还未登录！
+</view>
+<view wx:else>
+  <view class="css">
+    <view class="weui-btn weui-btn_warn" aria-role="button" bindtap="logOut_btn">退出账号</view>
+    <view class="weui-btn weui-btn_warn" aria-role="button" bindtap="logOff_btn">注销账号</view>
+  </view>
+</view>

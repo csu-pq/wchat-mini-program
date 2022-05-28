@@ -1,0 +1,46 @@
+<view class="user_info_wrap">
+  <view class="user_img_wrap" wx:if="{{hasUserInfo}}">
+    <view class="user_info">
+      <image class="user_icon" src="{{record.imgURL}}"></image>
+      <view class="user_nickname">{{record.nickName}}</view>
+    </view>
+  </view>
+  <view class="btn"  wx:else>
+    <button class="weui-btn weui-btn_default" bindtap="login">登录</button>
+  </view> 
+</view>
+
+<view class="weui-cells weui-cells_after-title">
+
+<navigator url="../setting/my_info/my_info" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+  <view class="weui-cell__bd">个人资料</view>
+  <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+</navigator>
+
+<navigator url="../setting/my_post/my_post" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+  <view class="weui-cell__bd">我的发布</view>
+  <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+</navigator>
+
+<navigator open-type="switchTab" url="../favorite/favorite" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+  <view class="weui-cell__bd">我的收藏</view>
+  <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+</navigator>
+
+<navigator url="../setting/my_dianzan/my_dianzan" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+  <view class="weui-cell__bd">我的点赞</view>
+  <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+</navigator>
+
+<view bindtap="navigatorToSetting" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+  <view class="weui-cell__bd">账号设置</view>
+  <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+</view>
+
+<navigator url="../setting/my_about/my_about" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+  <view class="weui-cell__bd">关于我们</view>
+  <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+</navigator>
+
+<view wx:if="{{hasUserInfo}}" class="weui-btn weui-btn_warn" aria-role="button" bindtap="bindClear">退出账号</view>
+</view>

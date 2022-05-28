@@ -1,0 +1,11 @@
+.weui-media-box__info__meta{
+  color:#748AA1;
+  font-size: 30rpx;
+}
+.weui-media-box__info__meta_extra{
+  color: black;
+}
+.zhiding_image {
+  height: 50rpx;
+  width: 100rpx;
+}

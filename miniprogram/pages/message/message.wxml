@@ -1,0 +1,36 @@
+<view wx:if="{{!hasUserInfo}}">
+	<view class="weui-msg">
+		<view class="weui-msg__icon-area"><text class="weui-icon-warn weui-icon_msg"></text></view>
+		<view class="weui-msg__text-area">
+			<view class="weui-msg__title">请先登录</view>
+		</view>
+	</view>
+	<view class="weui-msg__opr-area">
+		<view class="weui-btn-area">
+			<navigator class="weui-btn weui-btn_default" aria-role="button" open-type="switchTab" url="../mine/mine">去登录</navigator>
+		</view>
+	</view>
+</view>
+<view wx:else>
+	<block wx:for="{{msgList}}" wx:key="id">
+		<view bindtap="showPostInfo" id="{{item.postId}}" class="page__bd">
+			<view class="weui-cells demo_badge_cells">
+				<view class="weui-cell weui-cell_active">
+					<view class="weui-cell__hd">
+						<image src="{{item.imgURL}}"></image>
+					</view>
+					<view class="weui-cell__bd">
+						<text class="nickName">{{item.nickName}}</text>
+						<view class="comment">{{item.comment}}</view>
+						<view class="commentTime">{{item.commentTime}}</view>
+					</view>
+					<view wx:if="{{item.from!='System'}}" class="myTalk_cont">
+						<view class="myTalk">
+							{{item.myMsg}}
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+	</block>
+</view>
